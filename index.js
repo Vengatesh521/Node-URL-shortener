@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const urlRouter = require("./routes/urlRouter");
+const authRouter = require("./routes/authRouter");
 
 const app = express();
 app.set("view engine", "ejs");
@@ -17,8 +18,10 @@ mongoose
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: true }));
+app.use(cookeParser());
 
 app.use("/api", urlRouter);
+app.use("/auth", authRouter);
 
 const Port = 5000;
 app.listen(Port, () => {

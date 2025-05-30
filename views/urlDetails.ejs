@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Details</title>
+  </head>
+  <body>
+    <a href="/auth/logout">Logout</a>
+
+    <h1>URL Details</h1>
+    <p>Short ID: <%= url.shortCode %></p>
+    <p>
+      Redirect URL: <a href="<%= url.originalUrl %>"><%= url.originalUrl %></a>
+    </p>
+    <ol>
+      <% url.visitedHistory.forEach(function(visit) { %>
+      <li>
+        Visited on <%= visit.visitTime.toLocaleString() %> and visited count is
+        <%= visit.visitCount %>
+      </li>
+      <% }); %>
+    </ol>
+    <a href="/api">Back to Home Page</a>
+  </body>
+</html>
